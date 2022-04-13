@@ -1,6 +1,6 @@
--   id: check-absent-migrations
-    name: Check absent migrations with manage.py makemigrations --check --dry-run
-    entry: check-absent-migrations
+-   id: makemigrations-check-absent
+    name: "Check absent migrations with manage.py makemigrations --check --dry-run"
+    entry: makemigrations-check-absent
     pass_filenames: false
-    language: system
+    language: python
     always_run: true
