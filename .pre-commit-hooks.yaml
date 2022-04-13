@@ -1,6 +1,6 @@
 -   id: check-absent-migrations
     name: Check absent migrations with manage.py makemigrations --check --dry-run
-    entry: check-untracked-migrations
+    entry: check-absent-migrations
     pass_filenames: false
     language: system
     always_run: true
