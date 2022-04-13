@@ -28,9 +28,10 @@ Use this hook in your `.pre-commit-config.yaml` like this:
 
     repos:
     - repo: https://github.com/frankhood/pre-commit-hooks-django-migrations
+        rev: {{tag name}}  
         hooks:
         - id: check-absent-migrations
-            name: "👾 Check for absent migrations"
+            name: "Check for absent migrations"
 
 Features
 --------
