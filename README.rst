@@ -24,14 +24,13 @@ Quickstart
 
 Use this hook in your `.pre-commit-config.yaml` like this:
 
-```python
+.. code-block:: yaml
 
-repos:
-  - repo: https://github.com/frankhood/pre-commit-hooks-django-migrations
-    hooks:
-      - id: check-absent-migrations
-        name: "👾 Check for absent migrations"
-```
+    repos:
+    - repo: https://github.com/frankhood/pre-commit-hooks-django-migrations
+        hooks:
+        - id: check-absent-migrations
+            name: "👾 Check for absent migrations"
 
 Features
 --------
