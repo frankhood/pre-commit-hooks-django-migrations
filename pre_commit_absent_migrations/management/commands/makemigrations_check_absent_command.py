@@ -20,7 +20,7 @@ class Command(BaseCommand):
                     absent_migrations = True
                     break
         if absent_migrations:
-            raise Exception()
+            raise Exception(filename)
         
 
         
