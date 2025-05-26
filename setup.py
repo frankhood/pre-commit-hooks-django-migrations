@@ -13,7 +13,7 @@ except ImportError:
 from setuptools import setup
 
 def get_version(*file_paths):
-    """Retrieves the version from hooks/__init__.py"""
+    """Retrieves the version from pre_commit_absent_migrations/__init__.py"""
     filename = os.path.join(os.path.dirname(__file__), *file_paths)
     version_file = open(filename).read()
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
@@ -23,7 +23,7 @@ def get_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 
-version = get_version("hooks/__init__.py")
+version = get_version("pre_commit_absent_migrations/__init__.py")
 
 
 if sys.argv[-1] == 'publish':
@@ -56,7 +56,7 @@ setup(
     author_email='info@frankhood.it',
     url='https://github.com/frankhood/pre-commit-hooks-django-migrations',
     packages=[
-        'hooks',
+        'pre_commit_absent_migrations',
     ],
     include_package_data=True,
     install_requires=requirements,
