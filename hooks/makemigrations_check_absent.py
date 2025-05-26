@@ -18,7 +18,6 @@ def get_absent_migrations():
             stderr=subprocess.STDOUT,
             shell=True
         )
-        raise Exception(str(output))
     except Exception as ex:
         output = ex.output
         
