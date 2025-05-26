@@ -2,5 +2,5 @@
     name: "Check absent migrations with manage.py makemigrations --check --dry-run"
     entry: makemigrations-check-absent
     pass_filenames: false
-    language: python
+    language: system
     always_run: true
