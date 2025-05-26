@@ -15,6 +15,8 @@ def get_absent_migrations():
     try:
         output = subprocess.check_output(MAKEMIGRATIONS_CHECK_CMD)
     except Exception as ex:
+        print("#################", vars(ex))
+        raise Exception(str(vars(ex)))
         output = ex.output
     return output.decode().split("\n")
 
