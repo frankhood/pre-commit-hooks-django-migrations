@@ -13,8 +13,12 @@ MAKEMIGRATIONS_CHECK_CMD = [
 
 def get_absent_migrations():
     try:
-        output = subprocess.run(MAKEMIGRATIONS_CHECK_CMD)
-        raise Exception(str(vars(output)))
+        output = subprocess.check_output(
+            MAKEMIGRATIONS_CHECK_CMD,
+            stderr=subprocess.STDOUT,
+            shell=True
+        )
+        raise Exception(str(output))
     except Exception as ex:
         output = ex.output
         
