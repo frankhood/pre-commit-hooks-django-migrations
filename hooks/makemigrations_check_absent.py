@@ -20,6 +20,7 @@ def get_absent_migrations():
         )
     except Exception as ex:
         output = ex.output
+        raise Exception(output)
         
     return output.decode().split("\n")
 
