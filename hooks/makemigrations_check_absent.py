@@ -1,6 +1,5 @@
 import re
 import subprocess
-import sys
 
 MAKEMIGRATIONS_CHECK_CMD = [
     "python",
@@ -13,13 +12,11 @@ MAKEMIGRATIONS_CHECK_CMD = [
 
 def get_absent_migrations():
     try:
-        import dotenv 
         output = subprocess.check_output(
             MAKEMIGRATIONS_CHECK_CMD,
             stderr=subprocess.STDOUT
         )
     except Exception as ex:
-        raise Exception(str(vars(ex)))
         output = ex.output
     return output.decode().split("\n")
 
@@ -42,4 +39,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    exit(main())
