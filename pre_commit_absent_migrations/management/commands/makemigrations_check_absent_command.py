@@ -1,6 +1,7 @@
 
 
 import re
+import sys
 from django.core.management.base import BaseCommand
 
 from pre_commit_absent_migrations.makemigrations_check_absent import get_absent_migrations
@@ -20,7 +21,8 @@ class Command(BaseCommand):
                     absent_migrations = True
                     break
         if absent_migrations:
-            raise Exception(filename)
+            self.stderr.write(f"❌ Migrazione necessaria: filename")
+            sys.exit(1)
         
 
         
