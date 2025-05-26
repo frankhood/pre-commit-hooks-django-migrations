@@ -23,6 +23,7 @@ def main() -> int:
     absent_migrations = False
     for filename in get_absent_migrations():
         if re.match(r".*/migrations/.*\.py", filename.strip()):
+            raise Exception(re.match(r".*/migrations/.*\.py", filename.strip()))
             if not (
                 re.match(r".*/root/src/.*\.py", filename)
                 or re.match(r".*/.virtualenvs/.*\.py", filename)
@@ -30,7 +31,7 @@ def main() -> int:
                 or re.match(r".*/site-packages/.*\.py", filename)
             ):
                 absent_migrations = True
-                raise Exception()
+                raise Exception("absent_migrations true")
                 break
     if absent_migrations:
         return 1
