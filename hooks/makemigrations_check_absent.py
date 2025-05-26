@@ -13,17 +13,11 @@ MAKEMIGRATIONS_CHECK_CMD = [
 
 def get_absent_migrations():
     try:
-        result = subprocess.run(
-            MAKEMIGRATIONS_CHECK_CMD,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            check=False,
-            text=True  # per avere stringa direttamente, da Python 3.7+
-        )
-        output = result.stdout
+        output = subprocess.check_output(MAKEMIGRATIONS_CHECK_CMD)
     except Exception as ex:
-        output = str(ex)  # fallback
-    return output.split("\n")
+        output = ex.output
+    return output.decode().split("\n")
+
 
 def main() -> int:
     absent_migrations = False
