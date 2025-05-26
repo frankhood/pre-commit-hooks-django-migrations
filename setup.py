@@ -18,4 +18,8 @@ def get_version(*file_paths):
 
 version = get_version("hooks/__init__.py")
 
-setup()
+requirements = open("requirements.txt").readlines()
+
+setup(
+    install_requires=requirements,
+)

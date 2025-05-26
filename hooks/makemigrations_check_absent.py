@@ -13,12 +13,12 @@ MAKEMIGRATIONS_CHECK_CMD = [
 
 def get_absent_migrations():
     try:
+        import dotenv 
         output = subprocess.check_output(
             MAKEMIGRATIONS_CHECK_CMD,
             stderr=subprocess.STDOUT
         )
     except Exception as ex:
-        print("#################", vars(ex))
         raise Exception(str(vars(ex)))
         output = ex.output
     return output.decode().split("\n")
