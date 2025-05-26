@@ -13,10 +13,9 @@ MAKEMIGRATIONS_CHECK_CMD = [
 
 def get_absent_migrations():
     try:
-        output = subprocess.run(MAKEMIGRATIONS_CHECK_CMD)
+        output = subprocess.check_output(MAKEMIGRATIONS_CHECK_CMD)
     except Exception as ex:
         output = ex.output
-        raise Exception(output)
     return output.decode().split("\n")
 
 
@@ -24,7 +23,6 @@ def main() -> int:
     absent_migrations = False
     for filename in get_absent_migrations():
         if re.match(r".*/migrations/.*\.py", filename.strip()):
-            raise Exception(re.match(r".*/migrations/.*\.py", filename.strip()))
             if not (
                 re.match(r".*/root/src/.*\.py", filename)
                 or re.match(r".*/.virtualenvs/.*\.py", filename)
@@ -32,7 +30,6 @@ def main() -> int:
                 or re.match(r".*/site-packages/.*\.py", filename)
             ):
                 absent_migrations = True
-                raise Exception("absent_migrations true")
                 break
     if absent_migrations:
         return 1
@@ -40,4 +37,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    exit(main())
+    raise SystemExit(main())
