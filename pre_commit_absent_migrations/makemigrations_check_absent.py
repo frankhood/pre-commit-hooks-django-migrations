@@ -16,7 +16,7 @@ def get_absent_migrations():
             MAKEMIGRATIONS_CHECK_CMD,
             stderr=subprocess.STDOUT
         )
-    except Exception as ex:
+    except subprocess.CalledProcessError as ex:
         output = ex.output
     return output.decode().split("\n")
 
