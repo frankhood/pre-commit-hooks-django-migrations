@@ -71,4 +71,9 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.11",
     ],
+    entry_points={
+        "console_scripts": [
+            "check-migrations = pre_commit_absent_migrations.makemigrations_check_absent:makemigrations_check_absent",
+        ],
+    },
 )

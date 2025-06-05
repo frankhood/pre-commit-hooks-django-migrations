@@ -1,3 +1,4 @@
+import click
 import re
 import subprocess
 
@@ -13,8 +14,7 @@ MAKEMIGRATIONS_CHECK_CMD = [
 def get_absent_migrations():
     try:
         output = subprocess.check_output(
-            MAKEMIGRATIONS_CHECK_CMD,
-            stderr=subprocess.STDOUT
+            MAKEMIGRATIONS_CHECK_CMD, stderr=subprocess.STDOUT
         )
     except subprocess.CalledProcessError as ex:
         output = ex.output
@@ -36,6 +36,11 @@ def main() -> int:
     if absent_migrations:
         return 1
     return 0
+
+
+@click.command()
+def makemigrations_check_absent():
+    exit(main())
 
 
 if __name__ == "__main__":
