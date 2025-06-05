@@ -73,7 +73,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "check-migrations = pre_commit_absent_migrations.makemigrations_check_absent:makemigrations_check_absent",
+            "pre_commit_absent_migrations = pre_commit_absent_migrations.makemigrations_check_absent:makemigrations_check_absent",
         ],
     },
 )
