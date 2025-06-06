@@ -36,13 +36,14 @@ def main() -> int:
             ):
                 fail = 1
                 absent_migrations.append(filename)
-                break
+
     if fail:
         print(
-            f"❌ {settings.CRED}[ERROR] Some migrations are missing!\nAbsent migrations: {settings.CEND}"
+            f"❌ {settings.CRED}[ERROR] Some migrations are missing!\nPlease make sure you migrate or delete the following migrations:\n"
         )
         for migration in absent_migrations:
-            print(f"- {migration}\n")
+            print(f"- {migration}")
+        print(f"{settings.CEND}")
 
     return fail
 
