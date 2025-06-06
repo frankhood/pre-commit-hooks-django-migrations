@@ -5,6 +5,11 @@ from pre_commit_absent_migrations.makemigrations_check_absent import (
 )
 
 
+# =======================================================================================
+# pytest tests/test_check_absent.py
+# =======================================================================================
+
+
 def test_cli_runs(monkeypatch):
     monkeypatch.setattr(
         makemigrations_check_absent.subprocess,
