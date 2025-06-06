@@ -33,6 +33,7 @@ Use this hook in your `.pre-commit-config.yaml` like this:
         - id: makemigrations-check-absent
             name: "Check for absent migrations"
             entry: pre_commit_absent_migrations
+            pass_filenames: false  # please specify
 
 Features
 --------
