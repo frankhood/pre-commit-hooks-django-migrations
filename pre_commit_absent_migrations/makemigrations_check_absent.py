@@ -1,6 +1,8 @@
 import click
 import re
 import subprocess
+from . import settings
+
 
 MAKEMIGRATIONS_CHECK_CMD = [
     "python",
@@ -22,7 +24,8 @@ def get_absent_migrations():
 
 
 def main() -> int:
-    absent_migrations = False
+    absent_migrations = []
+    fail = 0
     for filename in get_absent_migrations():
         if re.match(r".*/migrations/.*\.py", filename.strip()):
             if not (
@@ -31,11 +34,17 @@ def main() -> int:
                 or re.match(r".*/venv/.*\.py", filename)
                 or re.match(r".*/site-packages/.*\.py", filename)
             ):
-                absent_migrations = True
+                fail = 1
+                absent_migrations.append(filename)
                 break
-    if absent_migrations:
-        return 1
-    return 0
+    if fail:
+        print(
+            f"❌ {settings.CRED}[ERROR] Some migrations are missing!\nAbsent migrations: {settings.CEND}"
+        )
+        for migration in absent_migrations:
+            print(f"- {migration}\n")
+
+    return fail
 
 
 @click.command()

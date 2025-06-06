@@ -1,0 +1,7 @@
+CRED = "\33[31m"
+# CGREEN = "\33[32m"
+# CYELLOW = "\33[33m"
+# CBLUE = "\33[34m"
+# CVIOLET = "\33[35m"
+# CBEIGE = "\33[36m"
+CEND = "\033[0m"
