@@ -50,3 +50,5 @@ docs/_build
 .coverage
 .tox
 .python-version
+venv
+.venv
